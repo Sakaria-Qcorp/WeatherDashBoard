@@ -3,6 +3,7 @@ body{
     line-height: 1.5;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: whitesmoke;
+    margin: 0;
 }
 .header{
     border-bottom:5px solid darkgreen ;
@@ -52,4 +53,13 @@ body{
     width:50%;
     height:50%;
     display:flex;
+ }
+ .mainCard{
+     border: 5px solid black;
+     border-radius:2rem;
+ }
+ .forcast{
+
+    border: 5px solid black;
+    border-radius:2rem;
  }
