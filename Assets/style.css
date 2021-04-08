@@ -57,9 +57,17 @@ body{
  .mainCard{
      border: 5px solid black;
      border-radius:2rem;
+     padding: 15px;
  }
  .forcast{
 
     border: 5px solid black;
+    width:max-content;
     border-radius:2rem;
+    padding: 10px;
+  
+ }
+ .move{
+     display:flex;
+     justify-content:space-between;
  }

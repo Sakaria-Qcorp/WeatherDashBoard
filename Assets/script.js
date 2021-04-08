@@ -83,7 +83,10 @@ function forecast(data,info) {
       humidityEl.textContent = "Humidity: " + info.daily[i].humidity + "%";
       uVIndexEl.textContent ="Uv Index: " + info.daily[i].uvi
       icon.setAttribute("src", "http://openweathermap.org/img/w/"+ info.daily[i].weather[0].icon + ".png");
+
       forcast.append(dateEl,icon,tempEl,humidityEl,windSpeedEl);
+      //forcast.setAttribute("style","border: 5px solid black")
+      //forcast.setAttribute("class","forecast");
 
   }
 
@@ -141,7 +144,7 @@ function historyBtn() {
 function generateBtn(){
   //getting the text
   var cityName = document.querySelector(".cityText").value;
-  var locationDetect ="https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=ef6f5fe554790837f4d09d8da1f19561";
+  var locationDetect ="https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
  searchHistory.push(cityName);
  localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
   
