@@ -63,28 +63,32 @@ function forecast(data,info) {
 
     let forcast = document.getElementById(`day${i}`)
     
-    
-    var date = moment().format("LT")
+        //displays for dates
+        var currentDate = moment();
+        //currentTime.add("1","hours");
+        var newDate = currentDate.add(i,'days');
+       
+
 
     var dateEl = document.createElement("h3");
     var tempEl = document.createElement("h4");
-    var windSpeedEl = document.createElement("h4");
+    //var windSpeedEl = document.createElement("h4");
     var humidityEl =  document.createElement("h4");
-    var uVIndexEl = document.createElement("h4");
+    //var uVIndexEl = document.createElement("h4");
     var icon = document.createElement("img");
   
   
     // Assigning the html elements
     var ftemp = Math.floor((info.daily[i].temp.day -273.15) * 1.8 +32);
   
-     dateEl.textContent = data.name +", " + date;
+     dateEl.textContent =  newDate.format("L"); ;
       tempEl.textContent = "Temp: "+ ftemp + " F";
-      windSpeedEl.textContent ="Wind Speed: " + info.daily[i].wind_speed;
+      //windSpeedEl.textContent ="Wind Speed: " + info.daily[i].wind_speed;
       humidityEl.textContent = "Humidity: " + info.daily[i].humidity + "%";
-      uVIndexEl.textContent ="Uv Index: " + info.daily[i].uvi
+      //uVIndexEl.textContent ="Uv Index: " + info.daily[i].uvi
       icon.setAttribute("src", "http://openweathermap.org/img/w/"+ info.daily[i].weather[0].icon + ".png");
 
-      forcast.append(dateEl,icon,tempEl,humidityEl,windSpeedEl);
+      forcast.append(dateEl,icon,tempEl,humidityEl);
       //forcast.setAttribute("style","border: 5px solid black")
       //forcast.setAttribute("class","forecast");
 
