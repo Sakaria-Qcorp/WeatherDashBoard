@@ -46,18 +46,20 @@ body{
     justify-self: flex-start;
 
  }
-
+/*
  .container{
     border:10px solid darkgreen;
     border: 10px;
     width:50%;
     height:50%;
     display:flex;
- }
+ }*/
+
  .mainCard{
      border: 5px solid black;
      border-radius:2rem;
      padding: 15px;
+   
  }
  .forcast{
 
@@ -65,12 +67,12 @@ body{
     width:max-content;
     border-radius:2rem;
     padding: 10px;
-    background-color:rgb(93, 93, 187)
+    background-color:rgb(93, 93, 187);
     
-
   
  }
  .move{
      display:flex;
-     justify-content:space-between;
+    /*justify-content:space-around;*/
+    
  }

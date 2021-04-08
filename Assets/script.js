@@ -9,12 +9,9 @@ var submitBtn = document.querySelector(".submit");
 
 
 
-/* 
-var locationDetect = "https://api.openweathermap.org/data/2.5/weather?q=" + texbox input + "&appid=ef6f5fe554790837f4d09d8da1f19561";
-*/
-submitBtn.addEventListener("click", getApi);
+submitBtn.addEventListener("click", getWeather);
 
-function getApi(){
+function getWeather(){
   //getting the text
   var cityName = document.querySelector(".cityText").value;
   var locationDetect ="https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
