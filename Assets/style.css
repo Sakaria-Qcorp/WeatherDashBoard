@@ -46,6 +46,18 @@ body{
     justify-self: flex-start;
 
  }
+ .weatherCards{
+     display: flex;
+     margin-left: 50px;
+   
+   
+     
+   
+ }
+ .search-History{
+     display:flex;
+     flex-direction: column;
+ }
 /*
  .container{
     border:10px solid darkgreen;
@@ -60,6 +72,8 @@ body{
      border-radius:2rem;
      padding: 15px;
      width:40%;
+     align-self: flex-start;
+ 
    
  }
  .forcast{
@@ -69,11 +83,15 @@ body{
     border-radius:2rem;
     padding: 10px;
     background-color:rgb(93, 93, 187);
+    margin: 10px;
+    flex-direction: row;
+ 
     
   
  }
  .move{
-     display:flex;
+  
+   margin-top: 10px;
     /*justify-content:space-around;*/
     
  }

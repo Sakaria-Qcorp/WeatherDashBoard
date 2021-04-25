@@ -3,7 +3,7 @@ var locationurl= "https://api.openweathermap.org/data/2.5/weather?q={city name}&
 var apiKey = "4bfd3a37d25ea0894f6393508fb91ea2";
 var userContainer = document.getElementById("search-container");
 var submitBtn = document.querySelector(".submit");
-//var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [] ;
+var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [] ;
 
 
 
@@ -17,8 +17,12 @@ function getWeather(){
   var locationDetect ="https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
 
   //******pushing city name to localStorage
- //searchHistory.push(cityName);
- //localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
+  if (cityName !== "") {
+    searchHistory.push(cityName);
+    localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
+    
+  }
+
   
 fetch(locationDetect)
 .then(function (response) {
@@ -56,7 +60,7 @@ fetch(locationDetect)
 
 function forecast(data,info) {
 
-  for (var i = 1; 5 <info.daily.length; i++) {
+  for (var i = 1; i < 5; i++) {
 
     let forcast = document.getElementById(`day${i}`)
     
@@ -129,9 +133,10 @@ function historyBtn() {
   var SearchEl = document.querySelector(".search-History");
   for (var i = 0; i < searchHistory.length; i++) {
     const btnTitle = searchHistory[i];
+  
      var newBtn = document.createElement("button");
      newBtn.textContent = btnTitle;
-     newBtn.addEventListener("click", getApi());
+     newBtn.addEventListener("click", generateBtn);
 
      SearchEl.append(newBtn);
       
@@ -140,14 +145,15 @@ function historyBtn() {
 
 }
 
-//historyBtn();
+historyBtn();
 
-function generateBtn(){
+function generateBtn(event){
+  console.log(event.target.textContent);
   //getting the text
-  var cityName = document.querySelector(".cityText").value;
+  var cityName = event.target.textContent;
   var locationDetect ="https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
- searchHistory.push(cityName);
- localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
+// searchHistory.push(cityName);
+ //localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
   
 fetch(locationDetect)
 .then(function (response) {
@@ -155,17 +161,18 @@ fetch(locationDetect)
 })
 .then(function (data) {
   // Use the console to examine the response
-
+  
   let lon = data.coord.lon;
   let lat = data.coord.lat;
  // https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={API key}
    var otherurl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
    fetch(otherurl)
 .then(function (response) {
-  return response.json();
+  response.json();
 })
 .then(function (info) {
-  //forecast(info.daily)
+  displayMainCard(data,info);
+  forecast(info.daily);
 
   //Use the console to examine the response
   //console.log(info,data);
